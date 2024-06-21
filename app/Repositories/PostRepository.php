@@ -16,7 +16,7 @@ class PostRepository implements PostRepositoryInterface
         return Post::latest()->paginate(5);
     }
 
-    public function storePost($data)
+    public function storePost(array $data)
     {
         return Post::create($data);
     }
@@ -26,19 +26,21 @@ class PostRepository implements PostRepositoryInterface
         return Post::find($id);
     }
 
-    public function updatePost($data, $id)
+    public function updatePost(array $data, $id)
     {
-        $post = Post::where('id', $id)->first();
+        $post = Post::findOrFail($id);
 
-        $post->title = $data['title'];
-        $post->description = $data['description'];
+        $post->update([
+            'title' => $data['title'],
+            'description' => $data['description'],
+        ]);
 
-        $post->save();
+        return $post;
     }
 
     public function destroyPost($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         
         $post->delete();
     }
