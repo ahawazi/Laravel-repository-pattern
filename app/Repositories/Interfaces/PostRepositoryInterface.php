@@ -2,7 +2,8 @@
 
 namespace App\Repositories\Interfaces;
 
-Interface PostRepositoryInterface{
+interface PostRepositoryInterface
+{
     public function allPosts();
     public function storePost($data);
     public function findPost($id);
