@@ -20,9 +20,7 @@ class PostController extends Controller
     public function index(): Response
     {
         $posts = $this->postRepository->allPosts();
-        return Inertia::render('Posts/Index',[
-            'posts' => $posts
-        ]);
+        return Inertia::render('Posts/Index', ['posts' => $posts]);
     }
 
     public function create(): Response
