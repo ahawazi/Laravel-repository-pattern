@@ -9,6 +9,7 @@ const Index = ({ posts = [] }) => {
     return (
         <>
             <h1 className="mt-6 text-3xl">Home</h1>
+            <a href={`/posts/create`} >Create the new post</a>
             <hr />
             {posts.data?.map((post) => (
                 <div key={post.id}>
