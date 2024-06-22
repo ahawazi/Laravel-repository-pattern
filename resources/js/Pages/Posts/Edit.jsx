@@ -7,7 +7,7 @@ const Edit = ({ post }) => {
     })
 
     function handleChange(e) {
-        setData(e.target.title, e.target.value);
+        setData(e.target.name, e.target.value);
     }
 
     function handleSubmit(e) {
@@ -17,22 +17,36 @@ const Edit = ({ post }) => {
 
     return (
         <>
-            <h1>Edit post</h1>
+            <h1>Edit Post</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="title">title:</label>
-                    <input type="text" name="title" id="title" value={data.title} onChange={handleChange}/>
+                    <label htmlFor="title">Title:</label>
+                    <input
+                        type="text"
+                        name="title"
+                        id="title"
+                        value={data.title}
+                        onChange={handleChange}
+                    />
                     {errors.title && <div>{errors.title}</div>}
                 </div>
-                
+
                 <div>
-                    <label htmlFor="description">description:</label>
-                    <input type="text" name="description" id="description" value={data.description} onChange={handleChange}/>
+                    <label htmlFor="description">Description:</label>
+                    <input
+                        type="text"
+                        name="description"
+                        id="description"
+                        value={data.description}
+                        onChange={handleChange}
+                    />
                     {errors.description && <div>{errors.description}</div>}
                 </div>
 
                 <div>
-                    <button type='submit' disabled={processing} >save</button>
+                    <button type="submit" disabled={processing}>
+                        Save
+                    </button>
                 </div>
             </form>
         </>
